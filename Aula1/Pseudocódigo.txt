@@ -1,8 +1,4 @@
-Pseudocódigo:   sequência finita e ordenada de passos;
-                descreve a solução de um problema;
-
-
-Algoritmo: Transferir Filmes Antigos para o Pendrive
+Pseudocódigo:
 
 Início
     Escreva("Colocar filmes antigos no pendrive para assistir na TV")
@@ -13,14 +9,13 @@ Início
     Escreva("Conectar o pendrive")
 
     Escreva("Verificar se há espaço disponível no pendrive")
-    Se (EspacoDisponivel = FALSO) Então
+    Se EspacoDisponivel = FALSO Então
         Escreva("Liberar espaço no pendrive")
-    Fim do Se;
+    FimSe
 
     Escreva("Copiar os filmes antigos para o pendrive")
     Escreva("Desconectar pendrive do computador")
     Escreva("Conectar pendrive na TV")
     Escreva("Escolher o filme desejado")
     Escreva("Play")
-
 Fim

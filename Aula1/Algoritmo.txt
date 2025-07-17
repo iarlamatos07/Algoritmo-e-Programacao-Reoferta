@@ -1,0 +1,14 @@
+Algoritmo: "Colocar filmes antigos no pendrive para assistir na TV"
+
+Passos:
+1. Encontrar o pendrive
+2. Ligar o computador
+3. Encontrar a pasta de filmes antigos
+4. Conectar o pendrive
+5. Verificar se há espaço disponível no pendrive
+    Se não houver espaço, liberar espaço
+6. Copiar os filmes antigos para o pendrive
+7. Desconectar o pendrive do computador
+8. Conectar o pendrive na TV
+9. Escolher o filme desejado
+10. Dar play
