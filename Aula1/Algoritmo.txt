@@ -12,3 +12,5 @@ Passos:
 8. Conectar o pendrive na TV
 9. Escolher o filme desejado
 10. Dar play
+
+fim;
