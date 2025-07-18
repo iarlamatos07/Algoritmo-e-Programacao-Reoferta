@@ -1,44 +1,128 @@
-public class Algoritmo {
+import java.util.*;
+
+public class FilmesAntigosPendrive {
+    static Scanner scanner = new Scanner(System.in);
+    static boolean pendriveEncontrado = false;
+    static boolean computadorLigado = false;
+    static boolean pastaFilmesEncontrada = false;
+    static boolean pendriveConectado = false;
+    static boolean espacoVerificado = false;
+    static boolean filmesCopiados = false;
+    static boolean pendriveDesconectado = false;
+    static boolean pendriveNaTV = false;
+    static boolean filmeEscolhido = false;
+
+    static List<String> filmesAntigos = Arrays.asList("Casablanca", "Cidadão Kane", "Cantando na Chuva");
+    static List<String> pendrive = new ArrayList<>();
+    static final int ESPACO_TOTAL = 3;
+
     public static void main(String[] args) {
-        System.out.println("Colocar filmes antigos no pendrive para assistir na TV");
+        System.out.println("🎬 Algoritmo: Colocar filmes antigos no pendrive para assistir na TV");
 
-        System.out.println("1. Encontrar o pendrive");
-        System.out.println("2. Ligar o computador");
-        System.out.println("3. Encontrar a pasta de filmes antigos");
-        System.out.println("4. Conectar o pendrive");
+        passo1_encontrarPendrive();
+        passo2_ligarComputador();
+        passo3_encontrarPastaFilmes();
+        passo4_conectarPendrive();
+        passo5_verificarEspaco();
+        passo6_copiarFilmes();
+        passo7_desconectarPendrive();
+        passo8_conectarNaTV();
+        passo9_escolherFilme();
+        passo10_darPlay();
 
-        boolean espacoDisponivel = verificarEspacoNoPendrive();
+        System.out.println("\n✅ Processo concluído! Bom filme! 🍿");
+    }
 
-        System.out.println("5. Verificar se há espaço disponível no pendrive");
-        if (!espacoDisponivel) {
-            System.out.println("Liberar espaço no pendrive");
-            liberarEspaco();
+    static void confirmar(String mensagem) {
+        System.out.print(mensagem + " (s para sim): ");
+        String resposta = scanner.nextLine().trim().toLowerCase();
+        if (!resposta.equals("s")) {
+            System.out.println("Operação cancelada. Encerrando...");
+            System.exit(0);
         }
-
-        System.out.println("6. Copiar os filmes antigos para o pendrive");
-        copiarFilmes();
-
-        System.out.println("7. Desconectar pendrive do computador");
-        System.out.println("8. Conectar pendrive na TV");
-        System.out.println("9. Escolher o filme desejado");
-        System.out.println("10. Play");
     }
 
-    static boolean verificarEspacoNoPendrive() {
-        // Simulação da verificação de espaço
-        int espacoLivreMB = 1500; // Exemplo: espaço disponível em MB
-        int tamanhoDosFilmesMB = 2000;
-
-        return espacoLivreMB >= tamanhoDosFilmesMB;
+    static void passo1_encontrarPendrive() {
+        confirmar("Passo 1: Encontrar o pendrive");
+        pendriveEncontrado = true;
+        System.out.println("✔️ Pendrive encontrado.");
     }
 
-    static void liberarEspaco() {
-        // Lógica para liberar espaço (simulada)
-        System.out.println("Deletando arquivos antigos ou desnecessários...");
+    static void passo2_ligarComputador() {
+        confirmar("Passo 2: Ligar o computador");
+        computadorLigado = true;
+        System.out.println("✔️ Computador ligado.");
     }
 
-    static void copiarFilmes() {
-        // Lógica para copiar filmes (simulada)
-        System.out.println("Filmes copiados com sucesso!");
+    static void passo3_encontrarPastaFilmes() {
+        confirmar("Passo 3: Encontrar a pasta de filmes antigos");
+        pastaFilmesEncontrada = true;
+        System.out.println("✔️ Pasta de filmes antigos localizada.");
+    }
+
+    static void passo4_conectarPendrive() {
+        confirmar("Passo 4: Conectar o pendrive ao computador");
+        pendriveConectado = true;
+        System.out.println("✔️ Pendrive conectado.");
+    }
+
+    static void passo5_verificarEspaco() {
+        confirmar("Passo 5: Verificar se há espaço disponível no pendrive");
+        int espacoDisponivel = ESPACO_TOTAL - pendrive.size();
+        System.out.println("📦 Espaço disponível: " + espacoDisponivel + " filmes.");
+        if (espacoDisponivel == 0) {
+            confirmar("Sem espaço disponível. Deseja liberar espaço?");
+            pendrive.clear();
+            System.out.println("🧹 Espaço liberado.");
+        }
+        espacoVerificado = true;
+    }
+
+    static void passo6_copiarFilmes() {
+        confirmar("Passo 6: Copiar os filmes antigos para o pendrive");
+        pendrive.clear();
+        pendrive.addAll(filmesAntigos);
+        filmesCopiados = true;
+        System.out.println("✔️ Filmes copiados para o pendrive.");
+    }
+
+    static void passo7_desconectarPendrive() {
+        confirmar("Passo 7: Desconectar o pendrive do computador");
+        pendriveConectado = false;
+        pendriveDesconectado = true;
+        System.out.println("✔️ Pendrive desconectado.");
+    }
+
+    static void passo8_conectarNaTV() {
+        confirmar("Passo 8: Conectar o pendrive na TV");
+        pendriveNaTV = true;
+        System.out.println("✔️ Pendrive conectado na TV.");
+    }
+
+    static void passo9_escolherFilme() {
+        confirmar("Passo 9: Escolher o filme desejado");
+        System.out.println("🎞️ Filmes disponíveis:");
+        for (int i = 0; i < pendrive.size(); i++) {
+            System.out.println((i + 1) + ". " + pendrive.get(i));
+        }
+        System.out.print("Digite o número do filme: ");
+        int escolha = scanner.nextInt();
+        scanner.nextLine(); // Limpar buffer
+        if (escolha >= 1 && escolha <= pendrive.size()) {
+            System.out.println("🎬 Filme escolhido: " + pendrive.get(escolha - 1));
+            filmeEscolhido = true;
+        } else {
+            System.out.println("❌ Escolha inválida. Encerrando...");
+            System.exit(0);
+        }
+    }
+
+    static void passo10_darPlay() {
+        confirmar("Passo 10: Dar play no filme");
+        if (filmeEscolhido) {
+            System.out.println("▶️ Reproduzindo filme... Aproveite!");
+        } else {
+            System.out.println("❌ Nenhum filme escolhido.");
+        }
     }
 }
